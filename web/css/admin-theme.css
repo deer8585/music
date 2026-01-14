@@ -1,0 +1,291 @@
+/* 管理员端浅绿色主题样式 - 使用 music_bg.jpg 背景图片 */
+:root {
+    --primary: hsl(122, 39%, 65%);
+    --secondary: hsl(122, 39%, 75%);
+    --accent: hsl(122, 39%, 55%);
+    --light: hsl(122, 39%, 85%);
+    --text-dark: hsl(122, 20%, 30%);
+    --text-light: hsl(122, 15%, 50%);
+}
+
+body {
+    /* 使用 music_bg.jpg 作为背景图片 - 添加版本参数防止缓存 */
+    background: url('../images/music_bg.jpg?v=2') no-repeat center center fixed !important;
+    background-size: cover !important;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 添加40%透明度的浅绿色渐变遮罩层 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+                rgba(200, 230, 201, 0.4),  /* 40% 透明度 */
+                rgba(255, 255, 255, 0.4)); /* 40% 透明度 */
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* 音乐音符背景装饰 */
+.background-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.music-note {
+    position: absolute;
+    color: var(--primary);
+    opacity: 0.3;
+    font-size: 3rem;
+    animation: float 15s linear infinite;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(-100%) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 容器样式覆盖 - 增强毛玻璃效果 */
+.container {
+    background-color: rgba(255, 255, 255, 0.90) !important;
+    box-shadow: 0 8px 32px rgba(129, 199, 132, 0.4) !important;
+    border: 1px solid rgba(129, 199, 132, 0.3) !important;
+    position: relative;
+    z-index: 10;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* 标题颜色 */
+h1, h2, h3 {
+    color: var(--accent) !important;
+    border-bottom-color: hsl(122, 39%, 80%) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* 按钮样式 */
+.btn, .action-btn, .back-btn, .menu a, button[type="submit"], input[type="submit"] {
+    background-color: var(--accent) !important;
+    box-shadow: 0 2px 8px rgba(129, 199, 132, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn:hover, .action-btn:hover, .back-btn:hover, .menu a:hover, 
+button[type="submit"]:hover, input[type="submit"]:hover {
+    background-color: var(--primary) !important;
+    box-shadow: 0 4px 12px rgba(129, 199, 132, 0.5);
+    transform: translateY(-2px);
+}
+
+/* 表格样式 */
+th {
+    background: linear-gradient(135deg, var(--accent), var(--primary)) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+tr:nth-child(even) {
+    background-color: rgba(200, 230, 201, 0.15) !important;
+}
+
+tr:hover {
+    background-color: rgba(200, 230, 201, 0.25) !important;
+    transition: background-color 0.2s ease;
+}
+
+td {
+    border-bottom-color: hsl(122, 39%, 80%) !important;
+}
+
+/* 输入框样式 */
+input, select, textarea {
+    border-color: var(--secondary) !important;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 3px rgba(129, 199, 132, 0.2);
+    outline: none;
+}
+
+/* 搜索区域 */
+.search-section, .search-box {
+    background-color: rgba(200, 230, 201, 0.25) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* 图标颜色 */
+.icon, .music-icon {
+    color: var(--accent) !important;
+}
+
+/* 角色徽章 */
+.role-admin {
+    background-color: var(--accent) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.role-user {
+    background-color: var(--light) !important;
+    color: var(--text-dark) !important;
+}
+
+/* 信息组 */
+.info-group {
+    background-color: rgba(200, 230, 201, 0.2) !important;
+    border-left-color: var(--accent) !important;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.info-group label {
+    color: var(--accent) !important;
+    font-weight: 600;
+}
+
+/* 头像预览 */
+.avatar-preview {
+    background-color: var(--light) !important;
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+    box-shadow: 0 4px 8px rgba(129, 199, 132, 0.3);
+}
+
+/* 封面占位符 */
+.no-cover {
+    background-color: var(--light) !important;
+    color: var(--accent) !important;
+}
+
+/* 菜单项样式 */
+.menu li a {
+    background-color: rgba(200, 230, 201, 0.35) !important;
+    border-color: var(--secondary) !important;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+/* 消息提示框 */
+.alert, .message {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.alert-success, .success {
+    background-color: rgba(76, 175, 80, 0.2) !important;
+    border-color: #4caf50 !important;
+}
+
+.alert-error, .error {
+    background-color: rgba(244, 67, 54, 0.2) !important;
+    border-color: #f44336 !important;
+}
+
+/* 表格容器 */
+table {
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+}
+
+/* 删除按钮特殊样式 */
+.delete-btn, .btn-danger {
+    background-color: #dc3545 !important;
+}
+
+.delete-btn:hover, .btn-danger:hover {
+    background-color: #c82333 !important;
+}
+
+/* 精华按钮样式 */
+.featured-btn {
+    background-color: #5cb85c !important;
+}
+
+.featured-btn:hover {
+    background-color: #449d44 !important;
+}
+
+/* 添加按钮样式 */
+.btn-add {
+    background-color: #28a745 !important;
+}
+
+.btn-add:hover {
+    background-color: #218838 !important;
+}
+
+/* 编辑按钮样式 */
+.btn-edit {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.btn-edit:hover {
+    background-color: #e0a800 !important;
+}
+
+/* 分页样式 */
+.pagination a {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-color: var(--secondary) !important;
+    color: var(--text-dark) !important;
+}
+
+.pagination a.active {
+    background-color: var(--accent) !important;
+    color: white !important;
+}
+
+.pagination a:hover {
+    background-color: var(--primary) !important;
+    color: white !important;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    body::before {
+        background: linear-gradient(135deg, 
+                    rgba(200, 230, 201, 0.5),  /* 移动端增加透明度 */
+                    rgba(255, 255, 255, 0.5));
+    }
+    
+    .container {
+        background-color: rgba(255, 255, 255, 0.95) !important;
+    }
+}
+
+/* 平滑过渡效果 */
+* {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+button, a, input[type="submit"] {
+    transition: all 0.3s ease;
+}
